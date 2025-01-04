@@ -3,7 +3,7 @@
 Groupie Tracker is a web application written in Go that tracks music groups and their concert dates. The application uses the `Groupie Tracker` API to fetch and display data about artists and their concert schedules.
 
 ![Home Page](screenshots/1.png)
-![Relation Page 2](screenshots/2.png)
+![Relation Page 2](screenshots/2.png?)
 
 ## Installation
 
