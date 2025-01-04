@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Concert Calendar</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+      body {
+        background-color: #2f4f4f;
+        color: #ffefd5;
+        margin: 0;
+        padding: 0;
+        font-family: "Manrope", sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .card {
+        width: calc(45% - 20px);
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ffefd5;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .card img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      .details {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+      }
+
+      .details li {
+        margin-bottom: 5px;
+      }
+
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Concert Calendar</h1>
+    <div class="card-container">
+      {{range .Index}}
+      <div class="card">
+        <h2>{{.ArtistName}}</h2>
+        <img src="{{.Image}}" alt="{{.ArtistName}}" />
+        <ul>
+          {{range $date, $locations := .DatesLocations}}
+          <li>
+            <strong>{{ $date }}</strong> - {{ range $index, $element :=
+            $locations }}{{ if $index }}, {{end}}{{$element}}{{end}}
+          </li>
+          {{end}}
+        </ul>
+      </div>
+      {{end}}
+    </div>
+  </body>
+</html>

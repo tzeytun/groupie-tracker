@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groupie Tracker</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+      body {
+        background-color: #2f4f4f;
+        color: #ffefd5;
+        margin: 0;
+        padding: 0;
+        font-family: "Manrope", sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .button-container {
+        text-align: center;
+        margin-bottom: 20px; /* Optional: Adjust margin as needed */
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .card {
+        width: calc(45% - 20px);
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ffefd5;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      .card img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      .details {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+      }
+
+      .details li {
+        margin-bottom: 5px;
+      }
+
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4caf50;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      button:active {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Groupie Tracker</h1>
+    <div class="button-container">
+      <button onclick="location.href='/relation'">Calendar</button>
+    </div>
+    <div class="card-container">
+      {{range .}}
+      <div class="card">
+        <h2>{{.Name}}</h2>
+        <img src="{{.Image}}" alt="{{.Name}}" />
+        <ul class="details">
+          <li><strong>Members:</strong> {{range .Members}}{{.}}, {{end}}</li>
+          <li><strong>Creation Date:</strong> {{.CreationDate}}</li>
+          <li><strong>First Album:</strong> {{.FirstAlbum}}</li>
+        </ul>
+      </div>
+      {{end}}
+    </div>
+  </body>
+</html>
